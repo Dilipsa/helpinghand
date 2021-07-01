@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-10 mx-auto">
+<div class="alert alert-success h3 text-center" role="alert">Your Application Status</div>
+  {% if application %}
+    <table class="table table-bordered table-striped border-info">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Adhar Card</th>
+      <th scope="col">USN</th>
+      <th scope="col">College</th>
+      <th scope="col">Course</th>
+      <th scope="col">Caste</th>
+      <th scope="col">Merit</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ application.user.username }}</td>
+      <td>{{ application.adhar_card }}</td>
+      <td>{{ application.USN }}</td>
+      <td>{{ application.college }}</td>
+      <td>{{ application.course }}</td>
+      <td>{{ application.caste }}</td>
+      <td>{{ application.merit }}</td>
+      <td>{{ application.status }}</td>
+    </tr>
+  </tbody>
+</table>
+{% else %}
+<div class="alert alert-success"role="alert">you have not applied for schoolarship</div>
+<a href="{% url 'core:apply_schoolarship' %}">apply here</a>
+{% endif %}
+</div>
+{% endblock content %}

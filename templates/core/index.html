@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <a style=" text-decoration: none" href="{% url 'core:vision' %}"><div class="col-4 py-3 my-4 bg-info text-dark text-center"style="border-radius:50px;">Vision</div></a>
+  <a style=" text-decoration: none" href="{% url 'core:mission' %}"><div class="col-4 py-3 my-4 bg-info text-dark text-center"style="border-radius:50px;">Mission</div></a>
+  <a style=" text-decoration: none" href="{% url 'core:about' %}"><div class="col-4 py-3 my-4 bg-info text-dark text-center"style="border-radius:50px;">About Us</div></a>
+  <a style=" text-decoration: none" href="{% url 'core:phone' %}"><div class="col-4 py-3 my-4 bg-info text-dark text-center"style="border-radius:50px;">Phone Numbers</div></a>
+  <a style=" text-decoration: none" href="{% url 'core:faq' %}"><div class="col-4 py-3 my-4 bg-info text-dark text-center"style="border-radius:50px;">Help(FAQ)</div></a>
+
+  <div class="row">
+    <div class="col-5 py-4 my-4 bg-info text-dark text-center"style="border-radius:50px;"><a style=" text-decoration: none" href="{% url 'core:giver' %}">Giver</a></div>
+    <div class="col-5 offset-2 py-4 my-4 bg-info text-dark text-center"style="border-radius:50px;"><a style=" text-decoration: none" href="{% url 'core:taker' %}">Taker</a></div>
+  </div>
+</div>
+{% endblock content %}

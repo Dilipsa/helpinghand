@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load embed_video_tags %}
+{% block content %}
+<div class="alert mx-auto text-center alert-info h4">Donate for following User</div>
+<div class="container">
+    <div class="col-10 mx-auto">
+        <table class="table table-bordered border-info">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>{{ taker.first_name }} {{taker.last_name }}</td>
+                <td>{{taker.user.register.address }}</td>
+                <td>{{taker.user.register.mobile }}</td>
+                <td>{{ taker.user.email }}</td>
+                <td><a href="{% url 'core:donate' taker.user.username taker.user.pk %}">Donate</a></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <div style="display:flex; width: 100%; justify-content: center;">
+      <div>
+    <img src="{{ taker.image.url }}" alt=" image" height=300px; width=auto>
+    </div>
+    <div>
+      {% video taker.video 'small' %}
+      </div>
+    </div>
+</div> 
+<div class="col-8 mx-auto">
+  Description:
+  <div class="card my-5 p-2 border-info">
+    {{taker.description}}
+  </div>
+</div>   
+
+{% endblock content %}

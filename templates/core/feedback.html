@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="alert mx-auto text-center alert-info h4">Donation Lists</div>
+<div class="col-10 mx-auto">
+        <table class="table table-bordered border-info">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Donated by</th>
+            <th scope="col">Donated To</th>
+            <th scope="col">Donated Amount</th>
+            <th scope="col">Donated Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            {% for i in donate %}
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ i.giver.first_name }}</td>
+            <td>{{ i.taker.first_name }}</td>
+            <td>{{ i.donation_amount}}</td>
+            <td>{{ i.date}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+        <div class="alert mx-auto text-center alert-info h4">Feedback Lists</div>
+        <table class="table table-bordered border-info">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Feedback by</th>
+                <th scope="col">Feedback To</th>
+                <th scope="col">Feedback</th>
+                <th scope="col">Feedback at</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                {% for i in feedback %}
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ i.feedback_giver.first_name }}</td>
+                <td>{{ i.feedback_to.first_name }}</td>
+                <td>{{ i.feedback }}</td>
+                <td>{{ i.date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        <div class="alert mx-auto text-center alert-info h4">Write your Feedbacks</div>
+
+    <form action="."method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit">
+    </form>
+</div>
+{% endblock content %}

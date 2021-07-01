@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="alert mx-auto text-center alert-info h4">My Donation History</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered border-info">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Donated by</th>
+            <th scope="col">Donated To</th>
+            <th scope="col">Donated Amount</th>
+            <th scope="col">Donated Date</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {% for i in donate %}
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ i.giver.first_name }}</td>
+            <td>{{ i.taker.first_name }}</td>
+            <td>{{ i.donation_amount}}</td>
+            <td>{{ i.date}}</td>
+            <td><a href="{% url 'core:feedback' i.taker.pk %}">Feedback</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+        
+    </div>
+  </div>
+</div>
+{% endblock content %}

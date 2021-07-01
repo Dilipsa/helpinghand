@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="alert mx-auto text-center alert-info h4">Admin Volunteer Request</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered border-info">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Volunteer Giver</th>
+            <th scope="col">Volunteer Taker</th>
+            <th scope="col">Donation Thing</th>
+            <th scope="col">Approve</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {% for i in volunteer %}
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ i.volunteer_giver }}</td>
+            <td>{{ i.volunteer_taker}}</td>
+            <td>{{ i.donation_thing}}</td>
+            <td>{{ i.approve}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+        
+    </div>
+  </div>
+</div>
+{% endblock content %}

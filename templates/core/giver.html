@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="alert mx-auto text-center alert-info h4">Donate</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered border-info">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Image</th>
+            <th scope="col">Video</th>
+            <th scope="col">Description</th>
+            <th class="text-center" scope="col" colspan="2">action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {% for i in taker %}
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ i.first_name}}</td>
+            <td>{{ i.last_name}}</td>
+            <td>{{ i.email}}</td>
+            <td>{{ i.image}}</td>
+            <td>{{ i.video}}</td>
+            <td>{{ i.description}}</td>
+            <td><a href="{% url 'core:giver_detail' i.pk %}">Details</a></td>
+            <td><a href="{% url 'core:volunteer' i.user.username i.user.pk %}">Volunteer</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+        
+    </div>
+  </div>
+</div>
+{% endblock content %}

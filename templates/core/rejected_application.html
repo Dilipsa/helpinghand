@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="mx-auto">
+<div class="alert alert-success h3 text-center" role="alert">Rejected application lists</div>
+    <table class="table table-bordered table-striped border-info">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Adhar Card</th>
+      <th scope="col">USN</th>
+      <th scope="col">College</th>
+      <th scope="col">Course</th>
+      <th scope="col">Caste</th>
+      <th scope="col">Merit</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>{% for app in application %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ app.user.username }}</td>
+      <td>{{ app.adhar_card }}</td>
+      <td>{{ app.USN }}</td>
+      <td>{{ app.college }}</td>
+      <td>{{ app.course }}</td>
+      <td>{{ app.caste }}</td>
+      <td>{{ app.merit }}</td>
+      <td>{{ app.status }}</td>
+    </tr>{% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock content %}

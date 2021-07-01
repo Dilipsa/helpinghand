@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="alert mx-auto text-center alert-info h4">Admin</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered border-info">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Image</th>
+            <th scope="col">Video</th>
+            <th scope="col">Description</th>
+            <th scope="col">Approve/unapprove</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {% for i in object_list %}
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ i.first_name}}</td>
+            <td>{{ i.last_name}}</td>
+            <td>{{ i.email}}</td>
+            <td>{{ i.image}}</td>
+            <td>{{ i.video}}</td>
+            <td>{{ i.description}}</td>
+            <td>{% if i.approve %}<a href="{% url 'core:admin_unapprove' i.pk %}"> {{ i.approve}}</a>
+            {% else %}<a href="{% url 'core:admin_approve' i.pk %}"> {{ i.approve}}</a>{% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+        
+    </div>
+  </div>
+</div>
+{% endblock content %}
