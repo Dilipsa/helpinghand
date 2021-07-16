@@ -7,14 +7,16 @@ from django.contrib import messages
 from django.views.generic import View, ListView
 from account.forms import UserForm
 from django.contrib.auth.models import User
+from account.models import Register
 
 def index_view(request):
     return render(request, 'core/index.html')
 
 class GiverView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
+        volunteer = self.request.user.register.is_volunteer
         taker = Taker.objects.filter(approve=True)
-        return render(self.request, 'core/giver.html', {'taker':taker})
+        return render(self.request, 'core/giver.html', {'taker':taker, 'volunteer': volunteer})
 
 class GiverDetailView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
@@ -71,8 +73,12 @@ class FeedBackView(LoginRequiredMixin, View):
 
 #################################################################
 class TakerListView(ListView):
-    model = Taker
-    template_name = "core/admin_taker_list.html"
+
+    def get(self, *args, **kwargs):
+        pin_code = self.request.user.register.pin_code
+        register = Register.objects.filter(is_volunteer=True)
+        object_list = Taker.objects.all()
+        return render(self.request, 'core/admin_taker_list.html', {'object_list':object_list, 'pin_code':pin_code, 'register':register})
 
 @login_required
 def approval_view(request, pk):
@@ -82,6 +88,15 @@ def approval_view(request, pk):
     return redirect("/core/admin-taker/")
 
 @login_required
+def volunteer_approval_view(request, pk):
+
+    taker = Taker.objects.get(id=pk)
+    taker.volunteer_status = True
+    taker.is_volunteer = True
+    taker.save()
+    return redirect("/core/volunteer-request/")
+
+@login_required
 def unapproval_view(request, pk):
     taker = Taker.objects.get(id=pk)
     taker.approve = False
@@ -89,9 +104,16 @@ def unapproval_view(request, pk):
     return redirect("/core/admin-taker/")
 
 @login_required
+def volunteer_unapproval_view(request, pk):
+    taker = Taker.objects.get(id=pk)
+    taker.volunteer_status = False
+    taker.save()
+    return redirect("/core/volunteer-request/")
+
+@login_required
 def donate_view(request,username, pk):
     user = get_object_or_404(User, username=username)
-    donate = get_object_or_404(Donate, pk=pk)
+    # donate = get_object_or_404(Donate, pk=pk)
     # user = get_object_or_404(User, pk=pk)
     if request.method == "POST":
         form = DonateForm(request.POST)
@@ -130,6 +152,23 @@ def volunteer(request, pk, username):
 def volunteer_list_view(request):
     volunteer = Volunteer.objects.all()
     return render(request, 'core/admin_volunteer_list.html', {'volunteer':volunteer})
+##################################################
+class TakerRequestView(View):
+
+    def get(self, *args, **kwargs):
+        volunteer = self.request.user.register.is_volunteer
+        pin_code = self.request.user.register.pin_code
+       
+        taker = Taker.objects.all()
+        return render(self.request, 'core/volunteer_request.html', {'taker':taker, 'pin_code': pin_code,'volunteer': volunteer})
+
+    def get_queryset(self):
+        # register = Register.objects.filter(pin_code = self.request.user.register.pin_code)
+        register = User.objects.filter(register__pin_code = self.request.user.register.pin_code)
+        print("register", register.count())
+        object_list = Taker.objects.filter(user = self.request.user)
+        return object_list
+
 
 def donation_history(request):
     if request.user.is_superuser:
@@ -139,6 +178,7 @@ def donation_history(request):
         donate = Donate.objects.filter(giver=request.user)
         context={'donate':donate}
     return render(request, 'core/donate_history_list.html', context)
+
 @login_required
 def feedback_view(request, pk):
     form = FeedbackForm(request.POST or None)
@@ -159,90 +199,4 @@ def feedback_view(request, pk):
             # 'taker':taker
                 }
     return render(request, 'core/feedback.html', context)
-
-####################################################################################################
-from django.contrib.auth.hashers import check_password
-from django.views import View
-
-
-class CheckOut(View):
-    def post(self, request):
-        address = request.POST.get('address')
-        phone = request.POST.get('phone')
-        customer = request.session.get('customer')
-        cart = request.session.get('cart')
-        products = Product.get_products_by_id(list(cart.keys()))
-        print(address, phone, customer, cart, products)
-
-        for product in products:
-            print(cart.get(str(product.id)))
-            order = Order(customer=Customer(id=customer),
-                          product=product,
-                          price=product.price,
-                          address=address,
-                          phone=phone,
-                          quantity=cart.get(str(product.id)))
-            order.save()
-        request.session['cart'] = {}
-
-        return redirect('cart')
-
-
-
-
-from django.shortcuts import render , redirect , HttpResponseRedirect
-
-
-# Create your views here.
-class Index(View):
-
-    def post(self , request):
-        product = request.POST.get('product')
-        remove = request.POST.get('remove')
-        cart = request.session.get('cart')
-        if cart:
-            quantity = cart.get(product)
-            if quantity:
-                if remove:
-                    if quantity<=1:
-                        cart.pop(product)
-                    else:
-                        cart[product]  = quantity-1
-                else:
-                    cart[product]  = quantity+1
-
-            else:
-                cart[product] = 1
-        else:
-            cart = {}
-            cart[product] = 1
-
-        request.session['cart'] = cart
-        print('cart' , request.session['cart'])
-        return redirect('homepage')
-
-
-
-    def get(self , request):
-        # print()
-        return HttpResponseRedirect(f'/store{request.get_full_path()[1:]}')
-
-def store(request):
-    cart = request.session.get('cart')
-    if not cart:
-        request.session['cart'] = {}
-    products = None
-    categories = Category.get_all_categories()
-    categoryID = request.GET.get('category')
-    if categoryID:
-        products = Product.get_all_products_by_categoryid(categoryID)
-    else:
-        products = Product.get_all_products();
-
-    data = {}
-    data['products'] = products
-    data['categories'] = categories
-
-    print('you are : ', request.session.get('email'))
-    return render(request, 'index.html', data)
 

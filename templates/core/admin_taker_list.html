@@ -15,6 +15,7 @@
             <th scope="col">Image</th>
             <th scope="col">Video</th>
             <th scope="col">Description</th>
+            <th scope="col">Volunteer Approval</th>
             <th scope="col">Approve/unapprove</th>
           </tr>
         </thead>
@@ -22,14 +23,23 @@
           <tr>
             {% for i in object_list %}
             <th scope="row">{{ forloop.counter }}</th>
-            <td>{{ i.first_name}}</td>
-            <td>{{ i.last_name}}</td>
-            <td>{{ i.email}}</td>
+            <td>{{ i.user.first_name}}</td>
+            <td>{{ i.user.last_name}}</td>
+            <td>{{ i.user.email}}</td>
             <td>{{ i.image}}</td>
             <td>{{ i.video}}</td>
             <td>{{ i.description}}</td>
+            <td>
+             
+
+              {% if i.volunteer_status %}Approved{% else %}{{ i.volunteer_status }}{% endif %}
+
+           
+            </td>
             <td>{% if i.approve %}<a href="{% url 'core:admin_unapprove' i.pk %}"> {{ i.approve}}</a>
             {% else %}<a href="{% url 'core:admin_approve' i.pk %}"> {{ i.approve}}</a>{% endif %}
+
+            
             </td>
           </tr>
           {% endfor %}

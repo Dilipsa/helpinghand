@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 <div class="alert mx-auto text-center alert-info h4">Donate</div>
+{% if volunteer %}<a href="{% url 'core:volunteer_request' %}" class="btn btn-primary mb-2"style="border-radius: 25px; background-color: tomato; border-green: red; border-width: 5px; ">click here to approve your nearby</a>{% endif %}
 <div class="container">
   <div class="row">
     <div class="col-12">

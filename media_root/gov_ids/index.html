@@ -1,0 +1,2834 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+@media screen and (max-width: 768px){
+    .search_img {
+        left: 94%;
+    }
+    <!-- #find-me{
+        margin-top: 8px;
+    } -->
+    #main_search_bar{
+        margin-top: -9px;
+    }
+}
+
+.custom-control-label{
+    padding-left: 12%;
+}
+
+.custom-control {
+    padding-left:0px;
+}
+
+@media screen and (min-width: 501px){
+   #car_location_1_hide{
+    display: block !important;
+  }
+  #car_location_12_hide{
+    display:none !important;
+  }
+}
+
+.product-list .product-item .image img {
+    object-fit: contain;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0px;
+    bottom: 0px;
+    height: 103%;
+}
+
+}
+* {
+  box-sizing: border-box;
+}
+.autocomplete {
+  position: relative;
+  display: block;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+#mobilecarousel{
+  display:none;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9;
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+.carousel_mobile,.mobile_search ,.mobile_button,.carouselexample,.first,.mobile_feature{
+    display: none;
+  }
+.carousel-indicators{
+    margin-bottom:4050px;
+  }
+
+/*responsive*/
+@media screen and (min-width:1340px){
+    .rowslide{
+        margin-left:0px;
+        margin-right:0px;
+    }
+    .change{
+        padding-right:3%;
+    }
+}
+@media screen and (max-width:640px) and (min-width:300px){
+
+.navbar{
+  width: 100%;
+   margin-left: 0px;
+}
+}
+@media screen and (max-width:500px) {
+   #car_location_1_hide{
+    display: none !important;
+  }
+  #car_location_12_hide{
+    display:block !important;
+  }
+  .carouselexample{
+    display:none;
+  }
+
+  #hide-cor{
+  display:none;
+}
+#hide_content_side{
+  display:none
+}
+  #hide_sort_brand{
+    display:none;
+  }
+  #hide_sort_cat
+  {
+    display:none;
+  }
+  #awardCarousel{
+    display:none;
+  }
+  #box{
+    display:none;
+  }
+  .term-cta{
+    display:none;
+  }
+}
+
+@media screen and (max-width:580px) and (min-width:300px){
+   .navbar,.fluid,.container{
+    width:100%;
+    margin-left: 0px;
+
+  }
+  .image{
+    width:102px;
+
+  }
+  .ml-5, .mx-5 {
+     margin-left: 0rem !important;
+     font-size: 17px;
+   }
+.navbar-toggler, {
+    width:40px;
+
+  }
+  .navbar-toggler-icon{
+     margin-right:-1px;
+  }
+}
+
+
+@media screen and (max-width:480px) and (min-width:300px){
+
+
+.award-carousel,.ad-small-box,.banner,.search-location,.product-list,.promo-video,.term-cta,.newstetter,.pt-5,.pb-5,.copyright,.register-form,.d-block,.feature,.certificate-cta,.mt-3,.carousel,{
+     width:90%
+  }
+          /*.feature{
+          width:85%;
+          }*/
+  .element.style{
+    margin-left:0px;
+  }
+  .img{
+    width:140px;
+    margin-right: 00px;
+  }
+   .offset-3{
+  margin-left: 0px;
+  }
+  .col-6 {
+    max-width: 100%;
+  }
+  .para{
+    margin-right: 30px;
+  }
+  .term-cta h1{
+    margin-right: 0px;
+  }
+  .term-cta {
+    padding: 7px;
+    display:block;
+  }
+  .btn{
+    white-space:initial;
+    overflow: hidden;
+  }
+  /*.btn{
+    width:50px;
+  }*/
+  /*.product-list{
+    padding-left: 0px;
+    padding-right: 0px;
+  }*/
+  .carousel-inner,{
+    width:210px;
+
+  }
+  .award-carousel{
+    display:none;
+  }
+
+  .imag{
+    right:0px;
+    top:3px;
+    object-fit:100%;
+    transform: translateX(50%);
+  }
+
+  #subscribe{
+    min-width: 2px;
+  }
+  .send{
+    margin-bottom: 20px;
+  }
+  /*.btn-primary,.d-flex{
+  display: none;
+   }*/
+
+  }
+
+
+@media screen and (max-width: 312px){
+.imgcls{
+     position: relative;
+    margin-bottom: 10px;
+    margin-left: -7% !important;
+    width: 187px !important;
+    height: 143px !important;
+  }
+}
+@media screen and (max-width: 312px){
+.imgcls{
+     position: relative;
+    margin-bottom: 10px;
+    margin-left: -7% !important;
+    width: 187px !important;
+    height: 143px !important;
+  }
+}
+
+@media screen and (min-width: 313px) and (max-width:360px){
+.imgcls{
+     position: relative;
+    margin-bottom: 10px;
+    margin-left: 2% !important;
+    width: 187px !important;
+    height: 143px !important;
+  }
+}
+@media screen and (min-width: 360px) and (max-width: 400px){
+.imgcls{
+     position: relative;
+    margin-bottom: 10px;
+    margin-left: 9% !important;
+    width: 187px !important;
+    height: 143px !important;
+  }
+}
+@media screen and (min-width: 401px) and (max-width: 454px){
+.imgcls{
+     position: relative;
+    margin-bottom: 10px;
+    margin-left: 18% !important;
+    width: 187px !important;
+    height: 143px !important;
+  }
+}
+ @media screen and (min-width: 455px) and (max-width:500px){
+.imgcls{
+     position: relative;
+    margin-bottom: 10px;
+    margin-left: 24% !important;
+    width: 187px !important;
+    height: 143px !important;
+  }
+}
+@media screen and (max-width: 1800px)and (min-width: 1200px){
+  .product-item{
+    width:170px;
+    
+  }
+}
+@media screen and (max-width: 1200px)and (min-width: 1000px){
+  .product-item{
+    width:130px;
+  }
+}
+
+@media screen and (max-width: 480px)and (min-width: 300px){
+  .carousel_mobile,.mobile_search,.mobile_button,.first{
+    display: inline;
+    display: flex;
+  }
+  .carousel_laptop,.laptop_search,.mobile_ftr,.big_screen,.second,.award-carousel,.ad-big-box{
+    display: none;
+  }
+  .carousel-indicators{
+    margin-bottom:50px;
+  }
+  .mobile_search{
+   margin-bottom: 15px;
+  }
+  .mobile_button{
+    padding-right: 30px;
+    margin-top: 12px;
+  }
+
+  .column,.sec_column{
+    padding-left: 7px;
+    padding-right:7px;
+  }
+  .carouselexample,{
+    width:100%;
+  }
+
+}
+
+/*responsive for TABLETS start */
+@media(min-width:500px) and (max-width: 1000px){
+  .col-md-3{
+        flex: 10 10 45%;
+        max-width: 45%;
+}
+  .laptop_search{
+        flex-direction: column;
+        align-items: end;
+}
+  .form-control{
+        margin-top:3px;
+}
+  .term-cta{
+        display:block;
+}
+  .offset-3{
+        margin-left: 30px;
+}
+  .col-6 {
+        max-width: 90%;
+  }
+
+}
+/*responsiveness for tab end */
+
+
+@media screen and (max-width: 480px)and (min-width: 300px){
+ .carouselexample{
+    display: inline;
+    }
+}
+
+ #top_slider_mobile{
+    display:none;
+  }
+
+@media screen and (max-width: 580px)and (min-width: 100px){
+  #mob_slider{
+  height: 28px;
+  width: 30px;
+}
+  #top_slider{
+   display:none;
+  }
+  #top_slider_mobile{
+    display:block;
+  }
+  .lap1{
+    display:none;
+  }
+
+  .col-3 {
+    flex: 0 0 25%;
+    max-width: 29%;
+}
+
+}
+@media (min-width:1000px){
+.col-md-3 {
+    flex: 0 0 25%;
+    max-width: 24%;
+}
+}
+@media (max-width:500px){
+.w-100 {
+    width: 200% !important;
+}
+.form-control {
+    font-size: 12px;
+    /*padding: 0.375rem 1.75rem;*/
+}
+
+.src{
+    display:flex;
+    
+}
+.btn-outline-secondary{
+    font-size:10px;
+}
+}
+
+.rounded-pill-left {
+  border-top-left-radius: 50rem !important;
+  border-bottom-left-radius: 50rem !important;
+}
+.rounded-pill-right {
+  border-top-right-radius: 50rem !important;
+  border-bottom-right-radius: 50rem !important;
+}
+
+/* Another classes to use */
+.rounded-t-l-0 {
+  border-top-left-radius: 0 !important;
+}
+.rounded-t-r-0 {
+  border-top-right-radius: 0 !important;
+}
+.rounded-b-l-0 {
+  border-bottom-left-radius: 0 !important;
+}
+.rounded-b-r-0 {
+  border-bottom-right-radius: 0 !important;
+}
+.rounded-x-l-0 {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+.rounded-x-r-0 {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.border {
+    border: 1px solid #334e9f !important;
+}
+
+.input-group-append {
+    margin-left: 0px;
+}
+
+</style>
+    <div class="container">
+        
+    <!--search bar -->
+    
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2" style="margin-bottom:2%;">
+      <div class="input-group" style="margin-top:2%;">
+        <input class="form-control border rounded-pill-left border-right-0" onclick="getLoc()" type="search" id="location"  placeholder="Auto Select Location" id="example-search-input">
+        
+        <input class="form-control border border-right-0 border-left-0" type="search" name="loc_1" id="location_1" oninput="search_slider_1()"  placeholder="Search By Product | Brand" id="example-search-input">
+        
+        <span class="input-group-append">
+          <button class="btn btn-outline-secondary border rounded-pill-right border-left-0"  id="main_search_bar" onclick="get_inpt_val()" style="background-color:#f47502" type="button">
+              <i class="fa fa-search src" style="color:white;">&nbsp; Search</i>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!--<div class="search-location mt-3">-->
+    <!--        <div class="form-inline">-->
+    <!--          <div class="form-group mr-1">-->
+    <!--            <input type="text" size="40" class="form-control" id="location" placeholder="AUTO SELECT LOCATION">-->
+    <!--          </div>-->
+    <!--          <button id="find-me" type="submit" onclick="getLoc()" class="btn btn" style="color:white;background-color:#f47502;">-->
+    <!--            <i class="fas fa-search"></i>-->
+    <!--          </button>-->
+              
+    <!--        </div>-->
+    <!--        <span id = "status" style=" position: absolute; margin-bottom: -55px; color: #fff;"></span>-->
+    <!--        <a id = "map-link" target="_blank" style=" position: absolute; margin-bottom: -55px; color: #fff;"></a>-->
+    <!--        <form class="form-inline" id="search_prd_loc_1" autocomplete="off">-->
+    <!--          <div class="form-group mr-1 src autocomplete">-->
+    <!--            <input type="text" size="40" class="form-control" name="loc_1" id="location_1" oninput="search_slider_1()" placeholder="SEARCH">-->
+             
+    <!--          <button  id="main_search_bar" type="button" class="btn btn id="main_search_bar"" style="color:white;background-color:#f47502;" onclick="get_inpt_val()">-->
+    <!--            <i class="fas fa-search"></i>-->
+    <!--          </button>-->
+    <!--           </div>-->
+    <!--        </form>-->
+    <!--      </div>-->
+    <!--end searchbar -->
+    
+    
+    {% comment %} for signup popup  {% endcomment %}
+    <!-- The Modal -->
+    <!--{% if not request.user.is_authenticated%}-->
+    <!-- <div class="modal popup" id="myModal">-->
+    <!--  <div class="modal-dialog">-->
+    <!--    <div class="modal-content">-->
+    <!--      <div class="modal-header">-->
+    <!--        <h4 class="modal-title">Login to continue browsing</h4>-->
+    <!--        {% comment %} <button type="button" class="close" data-dismiss="modal">&times;</button> {% endcomment %}-->
+    <!--      </div>-->
+    <!--      <div class="modal-body">-->
+    <!--      <div class="row">-->
+    <!--        <div class="col-6">-->
+    <!--        <a href="{% url 'dashboard:seller_contact_profile' %}"><button class="btn btn-primary">Login as seller</button></a>-->
+    <!--        </div>-->
+    <!--        <div class="col-6">-->
+    <!--        <a href="{% url 'accounts:buyer_profile' %}"><button class="btn btn-primary">Login as buyer</button></a>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--      </div>-->
+    <!--      {% comment %} <div class="modal-footer">-->
+    <!--        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
+    <!--      </div> {% endcomment %}-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--</div>-->
+       {% endif %}
+    {% comment %} end popup {% endcomment %}
+
+    <div class="row rowslide">
+    <div class="col-12">
+        <span id="show-msg">
+
+        </span>
+    </div>
+     <div class="row" id="top_slider">
+      <div id="carouselExampleControlstop" class="carousel slide d-flex align-items-center " data-ride="carousel">
+            <a class="btn btn-primary ml-3 p-2 d-flex align-items-center" href="#carouselExampleControlstop" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <div class="carousel-inner change">
+              <div class="carousel-item active">
+                <div class="row">
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                         <img src="{% static 'images/icons/kitchen-stoves.png' %}"  alt="Kitchen Stoves">
+                         </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image text-center" >
+                          <a href="#">
+                            <img src="{% static 'images/icons/mixer-grinder.png' %}" alt="Mixer Grinder">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/rice-cookers.png' %}" alt="Rice Cookers">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                         <img src="{% static 'images/icons/food-processors.png' %}" alt="Food Processors">
+                         </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                         <img src="{% static 'images/icons/electric-kettles.png' %}" alt="Electric Kettles">
+                         </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                        <img src="{% static 'images/icons/juicers.png' %}" alt="Juicers">
+                        </a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                        <img src="{% static 'images/icons/trimmers-shavers.png' %}" alt="Trimmers and Savers">
+                        </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/water-heaters.png' %}" alt="Water Heaters">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/water-filters.png' %}" alt="Water Filters">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/induction-cookers.png' %}" alt="Induction Cookers">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                         <img src="{% static 'images/icons/blenders.png' %}" alt="Blenders">
+                         </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                         <img src="{% static 'images/icons/oven.jpg' %}" alt="OTG">
+                         </a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                           <img src="{% static 'images/icons/exhaust-hoods.png' %}" alt="Exhaust Hoods">
+                           </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                         <img src="{% static 'images/icons/sandwich-makers.png' %}" alt="Sandwich Makers">
+                         </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/toaster.png' %}" alt="Toaster">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/deep-fryers.png' %}" alt="Deep Fryers">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/hair-dryer.png' %}" alt="Hair Drier">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                   <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/hair-straightner.png' %}" alt="Hair Straightener">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/dough-blenders.png' %}" alt="Dough Blenders">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/coffe-makers.png' %}" alt="Coffee Makers">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                         <img src="{% static 'images/icons/electric-iron.png' %}" alt="Electric Iron">
+                         </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                           <img src="{% static 'images/icons/vaccum-cleaner.png' %}" alt="Vaccum Cleaner">
+                           </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                         <img src="{% static 'images/icons/air-purifers.png' %}" alt="Air Purifiers">
+                         </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-2">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                        <img src="{% static 'images/icons/kitchen-stoves.png' %}"  alt="Kitchen Stoves">
+                        </a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a class="btn btn-primary mr-2 p-2 d-flex align-items-center" href="#carouselExampleControlstop" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+      </div>
+      </div>
+
+    {% comment %} Top slider for mobile screen {% endcomment %}
+<div class="row" id="top_slider_mobile">
+      <div id="carouselExampleControlstop_mob1" class="carousel slide d-flex align-items-center " data-ride="carousel">
+            <a class="btn btn-primary ml-2 p-2 d-flex align-items-center" href="#carouselExampleControlstop_mob1" id="mob_slider" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <div class="carousel-inner change">
+              <div class="carousel-item active">
+                <div class="row">
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                         <img src="{% static 'images/icons/kitchen-stoves.png' %}"  alt="Kitchen Stoves">
+                         </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image text-center" >
+                          <a href="#">
+                            <img src="{% static 'images/icons/mixer-grinder.png' %}" alt="Mixer Grinder">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/rice-cookers.png' %}" alt="Rice Cookers">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                         <img src="{% static 'images/icons/food-processors.png' %}" alt="Food Processors">
+                         </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                         <img src="{% static 'images/icons/electric-kettles.png' %}" alt="Electric Kettles">
+                         </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                        <img src="{% static 'images/icons/juicers.png' %}" alt="Juicers">
+                        </a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/blenders.png' %}" alt="Blenders">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/water-heaters.png' %}" alt="Water Heaters">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/water-filters.png' %}" alt="Water Filters">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                  </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/induction-cookers.png' %}" alt="Induction Cookers">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                         <img src="{% static 'images/icons/blenders.png' %}" alt="Blenders">
+                         </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                         <img src="{% static 'images/icons/oven.jpg' %}" alt="OTG">
+                         </a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                           <img src="{% static 'images/icons/exhaust-hoods.png' %}" alt="Exhaust Hoods">
+                           </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                         <img src="{% static 'images/icons/sandwich-makers.png' %}" alt="Sandwich Makers">
+                         </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/toaster.png' %}" alt="Toaster">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/deep-fryers.png' %}" alt="Deep Fryers">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/hair-dryer.png' %}" alt="Hair Drier">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/hair-straightner.png' %}" alt="Hair Straightener">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/dough-blenders.png' %}" alt="Dough Blenders">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                          <img src="{% static 'images/icons/coffe-makers.png' %}" alt="Coffee Makers">
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                         <img src="{% static 'images/icons/electric-iron.png' %}" alt="Electric Iron">
+                         </a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                           <img src="{% static 'images/icons/vaccum-cleaner.png' %}" alt="Vaccum Cleaner">
+                           </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                         <img src="{% static 'images/icons/air-purifers.png' %}" alt="Air Purifiers">
+                         </a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-4">
+                    <div class="product-item">
+                        <div class="image">
+                        <a href="#">
+                        <img src="{% static 'images/icons/trimmers-shavers.png' %}" alt="Trimmers and Savers">
+                        </a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a class="btn btn-primary mr-2 p-2 d-flex align-items-center" href="#carouselExampleControlstop_mob1" id="mob_slider" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+
+          </div>
+</div>
+<span id="display_500" ></span>
+<div class="row" id="demo">
+    <div class="col-md-4 col-lg-3 sec_column">
+        
+
+
+        <div class="feature "id="hide_sort_cat" >
+              <div class="feature__head">
+                    <h6>SORT BY CATEGORY</h6>
+                    <a href="#/" onclick="cat_show_all()">Show all</a>
+              </div>
+            <form class="feature__form"  id="cat_form">
+
+                  <div class="input-group" >
+                      <input type="text" class="form-control" id="search_input_cat" placeholder="Search" oninput="search_cat()">
+                    <div class="input-group-append">
+                        <button   class="btn btn" style="color:white;background-color:#f47502;" id="success_cat"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+              <div class="checkboxs" id="append_cat">
+              </div>
+              <button id="sort_category" class="btn btn-primary btn-block mt-3" >Load More</button>
+            </form>
+        </div>
+        
+        <div class="feature mt-3" id="hide_sort_brand">
+            <div class="feature__head">
+                  <h6>SORT BY BRAND</h6>
+                  <a href="#/" onclick="brand_sow_all()">Show all</a>
+            </div>
+            <form class="feature__form" id="brand_form">
+                <div class="input-group" >
+                    <input type="text" class="form-control" id="search_input" placeholder="Search" oninput="search()">
+                    <div class="input-group-append">
+                    <button   class="btn btn" style="color:white;background-color:#f47502;" id="success"  ><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <div class="checkboxs" id="append_brand">
+                </div>
+            </form>
+            <button id="sort_brand" class="btn btn-primary btn-block mt-3" >Load More</button>
+        </div>
+
+        <!-- Related products promo part strat -->
+          <div id="awardCarousel" class="carousel slide award-carousel mt-3" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#awardCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#awardCarousel" data-slide-to="1"></li>
+              <!-- <li data-target="#awardCarousel" data-slide-to="2"></li> -->
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="{% static 'images/tag.png' %}" alt="First slide">
+                <div class="carousel-caption award-caption">
+                  <p>BEST E-MART SHOPPE AWARD</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="{% static 'images/tag.png' %}" alt="Second slide">
+                <div class="carousel-caption award-caption">
+                  <p>BEST E-MART SHOPPE</p>
+                </div>
+              </div>
+              <!-- <div class="carousel-item">
+                <img class="d-block w-100" src="{% static '." alt="Third slide">
+              </div> -->
+            </div>
+
+            <a class="award-prev"  href="#awardCarousel" role="button" data-slide="prev">
+              <i class="fas fa-angle-left" aria-hidden="true"></i>
+              <!-- <span class="award-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span> -->
+            </a>
+            <a class="award-next" href="#awardCarousel" role="button" data-slide="next">
+              <i class="fas fa-angle-right" aria-hidden="true"></i>
+              <!-- <span class="award-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span> -->
+            </a>
+          </div>
+
+            <!-- end -->
+          <div class="ad-big-box mt-3">
+            <div class="image">
+              <img class="ad-img" src="{% static 'images/cooker.jpg' %}" alt="">
+              <img class="stipe" src="{% static 'images/top-strip.png' %}" alt="">
+            </div>
+            <div class="content">
+              <div class="logo">logo</div>
+              <div class="center-text">
+                your content should be here
+              </div>
+              <button class="btn btn-light btn-lg">Click here <i class="fas fa-angle-right"></i></button>
+              <div class="link">
+                <a href="#">www.website.com</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-8 col-lg-9">
+          <!-- banner part start -->
+          <div id="mainCarousel" class="carousel slide main-carousel mt-3" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#mainCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#mainCarousel" data-slide-to="1"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="banner">
+                  <h1>Welcome to B2B Mart</h1>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="banner">
+                  <h1>Welcome to B2B Mart</h1>
+                </div>
+              </div>
+            </div>
+        </div>
+
+           
+          <div id="output" style="color:black;">
+                </div>
+                <h3 class="mt-3 first ">TRUSTED BRANDS</h3>
+           <div class="carouselexample">
+         <div class="product-list mt-3" id="hide-cor">
+             <form class="form-inline mb-3">
+            <div class="form-group w-50 mr-3">
+              <input type="text" class="form-control w-100" id="location" placeholder="TRUSTED BRANDS | SEARCH BY PRODUCT TYPE">
+            </div>
+            
+          </form>
+           <div id="carouselExampleControls1_mob1" class="carousel slide d-flex align-items-center " data-ride="carousel">
+            <a class="btn btn-primary mr-2 p-2  align-items-center"  href="#carouselExampleControls1_mob1" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+             <div class="carousel-inner">
+
+          {% for object in x %}
+
+              {% if forloop.counter0|divisibleby:"1" %}
+              <div class="carousel-item {% if forloop.first %} active {% endif %}" style="width: 100%;">
+                  <div class="row">
+              {% endif %}
+
+                    <div class="col-12 col-sm-4 col-md-3" >
+                      <div class="product-item">
+                          <div class="image imgcls"  style="width:100%">
+                            <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><img src="{{object.image1.url}}" alt="Image 4"> </a>
+                          </div>
+                          <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><div class="name" style="height:50px;">{{object.name}}</div></a>
+                          <!-- <div class="type">{{object.product_group}}</div> -->
+                          <a href="{% url 'product:website_home_list' object.user.account.slug %}" class="btn btn-primary btn-block" >Visit our store</a>
+                      </div>
+                    </div>
+
+              {% if forloop.counter|divisibleby:"1" or forloop.counter0 == object_list.count %}
+                </div>
+              </div>
+              {% endif %}
+
+          {% endfor %}
+        </div>
+            <a class="btn btn-primary ml-2 p-2 align-items-center"  href="#carouselExampleControls1_mob1" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+         </div>
+         </div>
+          <h3 class="mt-3 second ">TRUSTED BRANDS</h3>
+         <div class="product-list mt-3" id="car_location_1_hide">
+             <form class="form-inline mb-3">
+            <div class="form-group w-50 mr-3">
+              <input type="text" class="form-control w-100" id="location" placeholder="TRUSTED BRANDS | SEARCH BY PRODUCT TYPE">
+            </div>
+            
+          </form>
+          
+          <div id="carouselExampleControls" class="carousel slide d-flex align-items-center " data-ride="carousel" >
+            <a class="btn btn-primary mr-2 p-2 d-flex align-items-center"  href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+        <div class="carousel-inner" id="car_location_1">
+          {% for object in x %}
+              {% if forloop.counter0|divisibleby:"4" %}
+              <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                  <div class="row">
+              {% endif %}
+                    <div class="col-12 col-sm-4 col-md-3">
+                      <div class="product-item">
+                          <div class="image imgcls">
+                            <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><img src="{{object.image1.url}}" alt="Image 4"> </a>
+                          </div>
+                          <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><div class="name" style="height:50px;">{{object.name}}</div></a>
+                          <!-- <div class="type">{{object.product_group}}</div> -->
+                          <a href="{% url 'product:website_home_list' object.user.account.slug %}" class="btn btn-primary btn-block">Visit our store</a>
+                      </div>
+                    </div>
+
+              {% if forloop.counter|divisibleby:"4" %}
+              {% comment %} {{forloop.counter}} {% endcomment %}
+                </div>
+              </div>
+              {% endif %}
+          {% endfor %}
+        </div>
+            <a class="btn btn-primary ml-2 p-2 d-flex align-items-center" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+
+
+
+
+
+          
+          <div class="product-list mt-3" id="car_location_12_hide">
+              <form class="form-inline mb-3">
+           <div class="form-group w-50 mr-3">
+              <input type="text" class="form-control w-100" id="location" placeholder="TRUSTED BRANDS | SEARCH BY PRODUCT TYPE">
+            </div>
+          </form>
+          <div id="carouselExampleControls1_mob" class="carousel slide d-flex align-items-center " data-ride="carousel">
+            <a class="btn btn-primary mr-2 p-2 d-flex align-items-center"  href="#carouselExampleControls1_mob" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            
+        <div class="carousel-inner" id="car_location_12">
+
+          {% for object in x %}
+              {% if forloop.counter0|divisibleby:"1" %}
+              <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                  <div class="row">
+              {% endif %}
+
+                    <div class="col-12 col-sm-4 col-md-3">
+                      <div class="product-item">
+                          <div class="image imgcls">
+                            <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><img src="{{object.image1.url}}" alt="Image 4"> </a>
+                          </div>
+                          <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><div class="name" style="height:50px;">{{object.name}}</div></a>
+                          <!-- <div class="type">{{object.product_group}}</div> -->
+                          <a href="{% url 'product:website_home_list' object.user.account.slug %}" class="btn btn-primary btn-block">Visit our store</a>
+                      </div>
+                    </div>
+              {% if forloop.counter|divisibleby:"1" %}
+                </div>
+              </div>
+              {% endif %}
+          {% endfor %}
+        </div>
+            <a class="btn btn-primary ml-2 p-2 d-flex align-items-center" href="#carouselExampleControls1_mob" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          </div>
+
+          <!-- Promotional vedio start -->
+          <div class="promo-video">
+            <span>Play your promotional video here</span>
+            <i class="fas fa-play" data-toggle="modal" data-target="#myModal"></i>
+            <!-- Modal -->
+              <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                  <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                    <div class="modal-body">
+                      <video width="100%" id="video1" height="100%">
+                        <source src="{% static 'images/video.mp4' %}" type="video/mp4">
+                      </video>
+                    </div>
+                    <div class="modal-footer">
+                      <button onclick="playPause()"  type="button" class="btn btn-primary" style="margin-left:1px;">Play/Pause</button> Send me a copy
+
+                      {% comment %} <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> {% endcomment %}
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              {% comment %} end video model  {% endcomment %}
+            <span>Make an impression with your customers</span>
+          </div>
+          <!-- Promotional vedio end -->
+          <!-- term-cta start -->
+          <div class="term-cta">
+            <h1 class="para"><span>30 day credit terms*</span> <br /> For Wholesalers & Retailers</h1>
+            <a href="{% url 'dashboard:credit_terms' %}"><button class="btn btn-light btn-lg">Click here <i class="fas fa-angle-right"></i></button></a>
+            <img class="img" src="{% static 'images/creadit.png' %}" style="max-width:none;">
+          </div>
+          <!-- term-cta end -->
+
+
+
+<!-- recomended products for mobile screens -->
+          <h3 class="mt-3 first ">THIS WEEK TOP FOUR EDITORS CHOICE</h3>
+         <div class="carouselexample">
+          <div class="product-list mt-3 mb-3">
+              <form class="form-inline mb-3">
+           <div class="form-group w-50 mr-3">
+              <input type="text" class="form-control w-100" id="location" placeholder="THIS WEEK TOP FOUR EDITORS CHOICE">
+            </div>
+          </form>
+          <div id="carouselExampleControls2_mob" class="carousel slide d-flex align-items-center " data-ride="carousel">
+            <a class="btn btn-primary mr-2 p-2  align-items-center"  href="#carouselExampleControls2_mob" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+             <div class="carousel-inner">
+
+          {% for object in x %}
+
+              {% if forloop.counter0|divisibleby:"1" %}
+              <div class="carousel-item {% if forloop.first %} active {% endif %}" style="width: 100%;">
+                  <div class="row">
+              {% endif %}
+
+                    <div class="col-12 col-sm-4 col-md-3">
+                      <div class="product-item">
+                          <div class="image" style="width: 100%;">
+                            <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><img src="{{object.image1.url}}" alt="Image 4"  > </a>
+                          </div>
+                          <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><div class="name" style="height:50px;">{{object.name}}</div></a>
+                          <!-- <div class="type">{{object.product_group}}</div> -->
+                          <a href="{% url 'product:website_home_list' object.user.account.slug %}" class="btn btn-primary btn-block">Visit our store</a>
+                      </div>
+                    </div>
+              {% if forloop.counter|divisibleby:"1" %}
+                </div>
+              </div>
+              {% endif %}
+
+          {% endfor %}
+        </div>
+            <a class="btn btn-primary ml-2 p-2 align-items-center"  href="#carouselExampleControls2_mob" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          {% comment %} <div class="row mt-4 mb-2">
+            <div class="col-sm-6 offset-sm-3">
+              <button class="btn btn-primary btn-lg btn-block">Know more about Editors Choice</button>
+            </div>
+          </div> {% endcomment %}
+          <!-- Row end -->
+         </div>
+         </div>
+          <!-- Recommended Products part end -->
+
+
+       <!-- Recommended Products part start -->
+       <h3 class="mt-3 second ">THIS WEEK TOP FOUR EDITORS CHOICE</h3>
+         <div class="product-list big_screen mt-3 mb-3">
+          <form class="form-inline mb-3">
+           <div class="form-group w-50 mr-3">
+              <input type="text" class="form-control w-100" id="location" placeholder="THIS WEEK TOP FOUR EDITORS CHOICE">
+            </div>
+          </form>
+          <div id="carouselExampleControls2" class="carousel slide d-flex align-items-center " data-ride="carousel">
+            <a class="btn btn-primary mr-2 p-2  align-items-center"  href="#carouselExampleControls2" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+             <div class="carousel-inner">
+
+          {% for object in x %}
+
+              {% if forloop.counter0|divisibleby:"4" %}
+              <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                  <div class="row">
+              {% endif %}
+
+                    <div class="col-6 col-sm-4 col-md-3">
+
+                     <div class="product-item" style="">
+
+                          <div class="image">
+                            <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><img src="{{object.image1.url}}" alt="Image 4"> </a>
+                          </div>
+                          <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><div class="name" style="height:50px;">{{object.name}}</div></a>
+                          <!-- <div class="type">{{object.product_group}}</div> -->
+                          <a href="{% url 'product:website_home_list' object.user.account.slug %}" class="btn btn-primary btn-block">Visit our store</a>
+                      </div>
+                    </div>
+              {% if forloop.counter|divisibleby:"4"  %}
+                </div>
+              </div>
+              {% endif %}
+
+          {% endfor %}
+        </div>
+            <a class="btn btn-primary ml-2 p-2 align-items-center"  href="#carouselExampleControls2" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <div class="row mt-4 mb-2">
+            {% comment %} <div class="col-sm-6 offset-sm-3">
+              <button class="btn btn-primary btn-lg btn-block">Know more about Editors Choice</button>
+            </div> {% endcomment %}
+          </div>
+          <!-- Row end -->
+         </div>
+          <!-- Recommended Products part end -->
+
+<!-- recomended products for mobile -->
+<h3 class="mt-3 first ">CATEGORY LEADERS</h3>
+         <div class="carouselexample">
+          <div class="product-list mt-3 mb-3" >
+          <form class="form-inline mb-3">
+           <div class="form-group w-50 mr-3">
+              <input type="text" class="form-control w-100" id="location" placeholder="CATEGORY LEADERS | SEARCH BY PRODUCT TYPE">
+            </div>
+
+          </form>
+          <div id="carouselExampleControls3" class="carousel slide d-flex align-items-center " data-ride="carousel">
+            <a class="btn btn-primary mr-2 p-2 align-items-center" href="#carouselExampleControls3"  role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <div class="carousel-inner">
+
+          {% for object in x %}
+
+              {% if forloop.counter0|divisibleby:"1" %}
+              <div class="carousel-item {% if forloop.first %} active {% endif %}" style="width:100%;">
+                  <div class="row">
+              {% endif %}
+
+                    <div class="col-12 col-sm-4 col-md-3">
+                      <div class="product-item" >
+                          <div class="image" style="width:100%;">
+                            <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><img src="{{object.image1.url}}" alt="Image 4" > </a>
+                          </div>
+                          <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><div class="name" style="height:50px;">{{object.name}}</div></a>
+                          <!-- <div class="type">{{object.product_group}}</div> -->
+                          <a href="{% url 'product:website_home_list' object.user.account.slug %}" class="btn btn-primary btn-block">Visit our store</a>
+                      </div>
+                    </div>
+              {% if forloop.counter|divisibleby:"1"  %}
+                </div>
+              </div>
+              {% endif %}
+
+          {% endfor %}
+        </div>
+
+            <a class="btn btn-primary ml-2 p-2 align-items-center"  href="#carouselExampleControls3" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <!-- Row end -->
+         </div>
+         </div>
+<!-- end -->
+
+  <h3 class="mt-3 second ">CATEGORY LEADERS</h3>
+      <!-- Recommended Products for laptop part start -->
+         <div class="product-list big_screen ">
+          <form class="form-inline mb-3">
+            <div class="form-group w-50 mr-3">
+              <input type="text" class="form-control w-100" id="location" placeholder="CATEGORY LEADERS | SEARCH BY PRODUCT TYPE {{object.product_group}}">
+            </div>
+            {% comment %} <button  type="submit" class="btn btn-primary">
+              <i class="fas fa-search"></i> Search
+            </button>  {% endcomment %}
+          </form>
+          <div id="carouselExampleControls3_lap" class="carousel slide d-flex align-items-center " data-ride="carousel">
+            <a class="btn btn-primary mr-2 p-2 align-items-center" href="#carouselExampleControls3_lap"  role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <div class="carousel-inner">
+
+          {% for object in x %}
+
+              {% if forloop.counter0|divisibleby:"4" %}
+              <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                  <div class="row">
+              {% endif %}
+
+                    <div class="col-6 col-sm-4 col-md-3">
+
+                     <div class="product-item" style="">
+
+                          <div class="image">
+                            <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><img src="{{object.image1.url}}" alt="Image 4"> </a>
+                          </div>
+                          <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><div class="name" style="height:50px;">{{object.name}}</div></a>
+                          <!-- <div class="type">{{object.product_group}}</div> -->
+                          <a href="{% url 'product:website_home_list' object.user.account.slug %}" class="btn btn-primary btn-block">Visit our store</a>
+                      </div>
+                    </div>
+              {% if forloop.counter|divisibleby:"4"  %}
+                </div>
+              </div>
+              {% endif %}
+
+          {% endfor %}
+        </div>
+
+            <a class="btn btn-primary ml-2 p-2 align-items-center"  href="#carouselExampleControls3_lap" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <!-- Row end -->
+         </div>
+          <!-- Recommended Products part end -->
+
+          <!-- Related products promo part strat -->
+          <h3 class="text-uppercase mt-3">Related products</h3>
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <!-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="{% static 'images/promo-img-1.png' %}" alt="First slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="{% static 'images/promo-img-1.png' %}" alt="Second slide">
+              </div>
+              <!-- <div class="carousel-item">
+                <img class="d-block w-100" src="..." alt="Third slide">
+              </div> -->
+            </div>
+          </div>
+          <!-- Related products promo part end -->
+
+          <!-- register form start -->
+          <div class="register-form mt-3">
+            <h5 class="text-uppercase mb-3">we connect manufacturers with wholesale traders & institutions</h5>
+            <div class="row">
+              <div class="col-12 col-sm-8">
+                <!-- messages -->
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor %}
+                {% endif %}
+                <!-- end messages -->
+               {% if request.user.is_authenticated %}
+                <form method="post" action="{% url 'dashboard:share_detail' request.user.account.slug %}" id="eshopeform">
+                {% endif %}
+                  {% csrf_token %}
+                  <div class="row">
+                    <div class="form-group col- 12 col-sm-6">
+                      <label for="name">Name</label>
+                      <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                    </div>
+                    <div class="form-group col- 12 col-sm-6">
+                      <label for="email">E-mail</label>
+                      <input type="email" class="form-control" name="email" id="email" placeholder="shotercarlos@gmail.com">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col- 12 col-sm-6">
+                      <label for="phone">Mobile</label>
+                      <input type="tel" class="form-control" name="mobile" id="phone" placeholder="+91 0000000000">
+                    </div>
+                    <div class="form-group col- 12 col-sm-6">
+                      <label for="businessType">Business Types</label>
+                      <select class="form-control btn-primary" name="business_type" id="businessType">
+                        <option>Wholesaler</option>
+                        <option>Manufacturer</option>
+                        <option>Retailer</option>
+                        <option>Exporter</option>
+                        <option>Distributor</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" name="message" id="message" rows="5"></textarea>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-sm-6">
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="send_copy" id="sendCopy">
+                        <label class="custom-control-label" for="sendCopy">Send me a copy</label>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-6 text-right">
+                      {% if not request.user.is_authenticated %}<p class="pull-left">please <a href="{% url 'account_login' %}">login</a> to send query</p>{% endif %}<button  class="btn btn-primary send">Send</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="right-side">
+                  <div class="top">
+                    <span>become a</span>
+                    <span>Authorized</span>
+                    <span>member today</span>
+                    <span>1000 Ad Impressions Free</span>
+                  </div>
+                  <div class="bottom"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- register form part end -->
+
+<!-- recomended products for mobile -->
+<h3 class="mt-3 first ">FEATURED PRODUCT</h3>
+         {% comment %} <div class="carouselexample">
+          <div class="product-list mt-3"> {% endcomment %}
+          {% comment %} <form class="form-inline mb-3"> {% endcomment %}
+            {% comment %} <div class="form-group w-50 mr-3">
+              <input type="text" class="form-control w-100" id="location" placeholder="FEATURED PRODUCT | SEARCH BY PRODUCT TYPE">
+            </div> {% endcomment %}
+
+          {% comment %} </form> {% endcomment %}
+            {% comment %} <div id="carouselExampleControls3_mob3" class="carousel slide d-flex align-items-center " data-ride="carousel">
+            <a class="btn btn-primary mr-2 p-2 align-items-center" href="#carouselExampleControls3_mob3" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <div class="carousel-inner"> {% endcomment %}
+
+          {% comment %} {% for object in x %}
+
+              {% if forloop.counter0|divisibleby:"1" %}
+              <div class="carousel-item {% if forloop.first %} active {% endif %}" style="width:100%;">
+                  <div class="row">
+              {% endif %}
+                    <div class="col-12 col-sm-4 col-md-3">
+                      <div class="product-item">
+                          <div class="image" style="width:100%;">
+                            <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><img src="{{object.image1.url}}" alt="Image 4" > </a>
+                          </div>
+                          <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><div class="name" style="height:50px;">{{object.name}}</div></a>
+                          <!-- <div class="type">{{object.product_group}}</div> -->
+                          <a href="{% url 'product:website_home_list' object.user.account.slug %}" class="btn btn-primary btn-block">Visit our store</a>
+                      </div>
+                    </div>
+              {% if forloop.counter|divisibleby:"1" or forloop.counter0 == object_list.count %}
+                </div>
+              </div>
+              {% endif %}
+
+          {% endfor %} {% endcomment %}
+        {% comment %} </div>
+            <a class="btn btn-primary ml-2 p-2 align-items-center" href="#carouselExampleControls3_mob3" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div> {% endcomment %}
+          <!-- Row end -->
+          {% comment %} <div class="text-center mt-4 mb-2">
+
+          </div> {% endcomment %}
+         {% comment %} </div>
+         </div> {% endcomment %}
+          <!-- Recommended Products part end -->
+<h3 class="mt-3 second ">FEATURED PRODUCT</h3>
+<div class="product-list mt-3">
+          <form class="form-inline mb-3">
+            <div class="form-group w-50 mr-3">
+              <input type="text" class="form-control w-100" id="location" placeholder="FEATURED PRODUCT | SEARCH BY PRODUCT TYPE">
+            </div>
+            {% comment %} <button type="submit" class="btn btn-primary">
+              <i class="fas fa-search"></i> Search
+            </button> {% endcomment %}
+          </form>
+          <div class="row">
+          {% for i in x %}
+            <div class="col-12 col-sm-4 col-md-3">
+              <div class="product-item">
+                  <div class="image" style="width:100%;">
+                    <a href="{% url 'dashboard:seller_product_detail' i.user.account.slug i.pk %}"><img src="{{i.image1.url}}" alt="Image 4" > </a>
+                  </div>
+                  <a href="{% url 'dashboard:seller_product_detail' i.user.account.slug i.pk %}"><div class="name">{{i.name}}</div></a>
+                  
+                   <a href="{% url 'product:website_home_list' i.user.account.slug %}" class="btn btn-primary btn-block">Visit our store</a>
+              </div>
+            </div>
+            {% endfor %}
+            
+          </div>
+          <!-- Row end -->
+          {% comment %} <div class="text-center mt-4 mb-2">
+            <button class="btn btn-primary btn-lg" id="row_append">Load More</button>
+          </div> {% endcomment %}
+         </div>
+      <!-- Corousel  Products part start -->
+         {% comment %} <div class="product-list big_screen mt-3">
+          <form class="form-inline mb-3">
+            <div class="form-group w-50 mr-3">
+              <input type="text" class="form-control w-100" id="location" placeholder="FEATURED PRODUCT | SEARCH BY PRODUCT TYPE">
+            </div>
+
+          </form>
+            <div id="carouselExampleControls4" class="carousel slide d-flex align-items-center " data-ride="carousel">
+            <a class="btn btn-primary mr-2 p-2 align-items-center" href="#carouselExampleControls4" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <div class="carousel-inner">
+
+          {% for object in x %}
+
+              {% if forloop.counter0|divisibleby:"4" %}
+              <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                  <div class="row">
+              {% endif %}
+                    <div class="col-6 col-sm-4 col-md-3">
+                      <div class="product-item" style="">
+                          <div class="image">
+                            <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><img src="{{object.image1.url}}" alt="Image 4"> </a>
+                          </div>
+                          <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><div class="name" style="height:50px;">{{object.name}}</div></a>
+                          <!-- <div class="type">{{object.product_group}}</div> -->
+                          <a href="{% url 'product:website_home_list' object.user.account.slug %}" class="btn btn-primary btn-block">Visit our store</a>
+                      </div>
+                    </div>
+              {% if forloop.counter|divisibleby:"4"  %}
+                </div>
+              </div>
+              {% endif %}
+
+          {% endfor %}
+        </div>
+
+           <a class="btn btn-primary ml-2 p-2 align-items-center" href="#carouselExampleControls4" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <!-- Row end -->
+          <div class="text-center mt-4 mb-2">
+
+          </div>
+         </div> {% endcomment %}
+          <!-- Recommended Products part end -->
+          <!-- CTA start -->
+          <div class="certificate-cta mt-3">
+            <div class="row no-gutters align-items-center">
+              <div class="col-12 col-sm-2 text-center">
+                <img src="{% static 'images/tag.png' %}" alt="">
+              </div>
+              <div class="col-12 col-sm-7">
+                <h5 class="text-uppercase mb-0">attention manufacturers</h5>
+                <h4 class="text-uppercase mb-0">get your Ramagya Vishwas Certification  </h4>
+                <h5 class="text-uppercase mb-0">trust certificate & imporve your bussiness</h5>
+              </div>
+              <div class="col-12 col-sm-3">
+                <a href="{% url 'certificate' %}"><button class="btn btn-light btn-lg" >Apply Now<i class="fas fa-angle-right"></i></button></a>
+              </div>
+            </div>
+          </div>
+          <!-- CTA end -->
+
+          <!-- CTA start -->
+          <div class="mt-3">
+            <img src="{% static 'images/book-spot.png' %}" alt="">
+          </div>
+          <!-- CTA end -->
+
+
+ <!-- Recommended Products part start for mobile-->
+ <h3 class="mt-3 first ">Manufactures Offering White Labelling Solutions</h3>
+         <div class="carouselexample">
+          <div class="product-list mt-3">
+            <form class="form-inline mb-3">
+              <div class="form-group w-50 mr-3">
+              <input type="text" class="form-control w-100" id="location" style="font-size:11px;" placeholder="Manufactures Offering White Labelling Solutions">
+            </div>
+
+              {% comment %} <button type="submit"  class="btn btn-primary">
+                <i class="fas fa-search"></i> Search
+              </button> {% endcomment %}
+            </form>
+            <div id="carouselExampleControls5_mobb" class="carousel slide d-flex align-items-center " data-ride="carousel">
+            <a class="btn btn-primary mr-2 p-2  align-items-center" href="#carouselExampleControls5_mobb" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <div class="carousel-inner">
+
+          {% for object in x %}
+
+              {% if forloop.counter0|divisibleby:"1" %}
+              <div class="carousel-item {% if forloop.first %} active {% endif %}"  style="width:100%;">
+                  <div class="row">
+              {% endif %}
+
+                    <div class="col-12 col-sm-4 col-md-3">
+                      <div class="product-item">
+                          <div class="image" style="width:100%;">
+                            <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><img src="{{object.image1.url}}" alt="Image 4" > </a>
+                          </div>
+                          <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><div class="name" style="height:50px;">{{object.name}}</div></a>
+                          <!-- <div class="type">{{object.product_group}}</div> -->
+                          <a href="{% url 'product:website_home_list' object.user.account.slug %}" class="btn btn-primary btn-block">Visit our store</a>
+                      </div>
+                    </div>
+
+              {% if forloop.counter|divisibleby:"1" %}
+                </div>
+              </div>
+              {% endif %}
+          {% endfor %}
+        </div>
+        <a class="btn btn-primary ml-2 p-2 align-items-center"  href="#carouselExampleControls5_mobb" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <!-- Row end -->
+          {% comment %}  {% endcomment %}
+         </div>
+         </div>
+          <!-- Recommended Products part end -->
+
+
+  <!-- Recommended Products part start for laptop -->
+  <h3 class="mt-3 second ">Manufactures Offering White Labelling Solutions</h3>
+          <div class="product-list big_screen mt-3">
+              <form class="form-inline mb-3">
+              <div class="form-group w-75  mr-3">
+                <input type="text" class="form-control w-100" id="location" placeholder="MANUFACTURERS OFFERING WHITE LABELLING SOLUTIONS">
+              </div> 
+              {% comment %} <button type="submit"  class="btn btn-primary">
+                <i class="fas fa-search"></i> Search
+              </button> {% endcomment %}
+            {% comment %}{% endcomment %} </form> 
+            <div id="carouselExampleControls5_mob5" class="carousel slide d-flex align-items-center " data-ride="carousel">
+            <a class="btn btn-primary mr-2 p-2  align-items-center" href="#carouselExampleControls5_mob5" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <div class="carousel-inner">
+
+          {% for object in x %}
+
+              {% if forloop.counter0|divisibleby:"4" %}
+              <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                  <div class="row">
+              {% endif %}
+
+                    <div class="col-6 col-sm-4 col-md-3">
+
+                      <div class="product-item" style="">
+
+                          <div class="image">
+                            <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><img src="{{object.image1.url}}" alt="Image 4"> </a>
+                          </div>
+                          <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><div class="name" style="height:50px;">{{object.name}}</div></a>
+                          <!-- <div class="type">{{object.product_group}}</div> -->
+                          <a href="{% url 'product:website_home_list' object.user.account.slug %}" class="btn btn-primary btn-block">Visit our store</a>
+                      </div>
+                    </div>
+
+              {% if forloop.counter|divisibleby:"4"  %}
+                </div>
+              </div>
+              {% endif %}
+          {% endfor %}
+        </div>
+        <a class="btn btn-primary ml-2 p-2 align-items-center"  href="#carouselExampleControls5_mob5" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <!-- Row end -->
+          {% comment %}  {% endcomment %}
+         </div>
+          <!-- Recommended Products part end -->
+
+
+ <!-- Recommended Products part start for mobile -->
+          <h3 class="mt-3 first">Recommended Products</h3>
+         <div class="carouselexample">
+          <div class="product-list mt-3">
+          
+            <div id="carouselExampleControls4_mob_" class="carousel slide d-flex align-items-center " data-ride="carousel">
+            <a class="btn btn-primary mr-2 p-2 align-items-center" href="#carouselExampleControls4_mob_" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <div class="carousel-inner">
+
+          {% for object in x %}
+
+              {% if forloop.counter0|divisibleby:"1" %}
+              <div class="carousel-item {% if forloop.first %} active {% endif %}" style="width:100%;">
+                  <div class="row">
+              {% endif %}
+
+                    <div class="col-12 col-sm-4 col-md-3">
+                      <div class="product-item">
+                          <div class="image" style="width:100%;">
+                            <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><img src="{{object.image1.url}}" alt="Image 4"  > </a>
+                          </div>
+                          <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><div class="name" style="height:50px;">{{object.name}}</div></a>
+                          <!-- <div class="type">{{object.product_group}}</div> -->
+                          <a href="{% url 'product:website_home_list' object.user.account.slug %}" class="btn btn-primary btn-block">Visit our store</a>
+                      </div>
+                    </div>
+              {% if forloop.counter|divisibleby:"1"  %}
+                </div>
+              </div>
+              {% endif %}
+
+          {% endfor %}
+        </div>
+
+            <a class="btn btn-primary ml-2 p-2 align-items-center"  href="#carouselExampleControls4_mob_" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <!-- Row end -->
+          {% comment %}  {% endcomment %}
+         </div>
+         </div>
+              <!-- Row end -->
+
+
+
+          <!-- Recommended Products part start for laptop-->
+          <h3 class="mt-3 second ">Recommended Products</h3>
+          <div class="product-list big_screen mt-3">
+            <div id="carouselExampleControls6" class="carousel slide d-flex align-items-center " data-ride="carousel">
+            <a class="btn btn-primary mr-2 p-2 align-items-center" href="#carouselExampleControls6" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <div class="carousel-inner">
+
+          {% for object in x %}
+
+              {% if forloop.counter0|divisibleby:"4" %}
+              <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                  <div class="row">
+              {% endif %}
+
+                    <div class="col-6 col-sm-4 col-md-3">
+                      <div class="product-item" style="">
+
+                          <div class="image">
+                            <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><img src="{{object.image1.url}}" alt="Image 4"> </a>
+                          </div>
+                          <a href="{% url 'dashboard:seller_product_detail' object.user.account.slug object.pk %}"><div class="name" style="height:50px;">{{object.name}}</div></a>
+                          <!-- <div class="type">{{object.product_group}}</div> -->
+                          <a href="{% url 'product:website_home_list' object.user.account.slug %}" class="btn btn-primary btn-block">Visit our store</a>
+                      </div>
+                    </div>
+              {% if forloop.counter|divisibleby:"4"  %}
+                </div>
+              </div>
+              {% endif %}
+
+          {% endfor %}
+        </div>
+
+            <a class="btn btn-primary ml-2 p-2 align-items-center"  href="#carouselExampleControls6" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <!-- Row end -->
+
+         </div>
+              <!-- Row end -->
+
+            <!-- <div class="searched-link">
+              <a href="#"><img src="images/product/img-1.jpeg" alt=""></a>
+              <a href="#"><img src="images/product/img-4.png' %}" alt=""></a>
+              <a href="#"><img src="images/product/img-5.jpg" alt=""></a>
+              <a href="#"><img src="images/product/img-6.png' %}" alt=""></a>
+              <a href="#">Search 3</a>
+              <a href="#">Search 4</a>
+              <a href="#">Search 5</a>
+            </div> -->
+            {% comment %}
+            <div class="fas fa-ellipsis-h position-absolute text-primary" style="right: 0; margin-top: -10px;"></div>
+            <div class="tag  position-absolute text-primary" style="right: 0;">refresh your search</div>
+            {% endcomment %}
+          </div>
+          <!-- Recommended Products part end -->
+        </div>
+    
+    {% comment %} ccard section  {% endcomment %}
+<h3 class="mt-3 second ">Learn More About RamagyaMart</h3>
+<div class="row justify-content-center text-center" style="margin-top:2%;">
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <img class="center" src="{% static 'images/helpp.png' %}" style="height:60px;width:60px;"/>
+        <h5 class="card-title">Business Loan</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Learn More</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+         <img class="center" src="{% static 'images/helpp.png' %}" style="height:60px;width:60px;"/>
+        <h5 class="card-title">Dial B2B service</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Learn More</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+          <img class="center" src="{% static 'images/helpp.png' %}" style="height:60px;width:60px;"/>
+        <h5 class="card-title">Need Quick Help</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Learn More</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+          <img class="center" src="{% static 'images/helpp.png' %}" style="height:60px;width:60px;"/>
+        <h5 class="card-title">Download App</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Learn More</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% comment %} end  {% endcomment %}
+</div>
+</div>
+</div>
+</div>
+
+    <!-- <div class="chat">
+      <img src="{% static 'images/chat.png' %}" alt="">
+      <div class="content">
+        <small>Have a Requirement?</small>
+        <h3>Get Best Price</h3>
+      </div>
+    </div> -->
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script>
+    {% comment %} document.getElementById('success').disabled = true; {% endcomment %}
+
+    {% comment %} for popup {% endcomment %}
+    setTimeout(function(){
+    $('.popup').show();
+    }, 2000);
+    {% comment %} end popup  {% endcomment %}
+
+    var data={{brand_data|safe}};
+    var data_id={{brand_id|safe}};
+    var cat_data={{cat_data|safe}};
+    var cat_id={{cat_id|safe}};
+    var prd_name={{prd_name|safe}};
+    var len=data.length;
+    var len_cat=cat_data.length;
+
+
+    fetch_data();
+    fetch_data_cat();
+//FOR CATEGORY ###################################################################
+    function fetch_data_cat() {
+        if(len_cat<=8 && len_cat>0 )
+    {
+        for(var i=0;i<len_cat;i++)
+        {
+        template=`
+                  <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" onclick="is_checked_cat()" autocomplete="off" id="category${cat_id[i]}">
+                      <label class="custom-control-label" for="category${cat_id[i]}">${cat_data[i]}</label>
+                  </div>`
+        $("#append_cat").append(template);
+        }
+
+    }
+    else if(len_cat>0 && len_cat>8)
+    {
+
+      for(var i=0;i<8;i++)
+        {
+        template=`
+                  <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" autocomplete="off" onclick="is_checked_cat()" id="category${cat_id[i]}">
+                      <label class="custom-control-label" for="category${cat_id[i]}">${cat_data[i]}</label>
+                  </div>`
+         $("#append_cat").append(template);
+        }
+    }
+    }
+    var temp=0;
+    $('#sort_category').click(function(ee){
+      ee.preventDefault();
+        if(temp==0)
+          {
+            temp=8;
+          }
+            if(data.length>8)
+            {
+              temp=temp;
+              var new_temp=temp+4;
+              if(new_temp<len_cat)
+              {
+                for(var i=temp;i<new_temp;i++)
+                {
+                var template=`<div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" autocomplete="off" onclick="is_checked_cat()" id="category${cat_id[i]}">
+                      <label class="custom-control-label" for="category${cat_id[i]}">${cat_data[i]}</label>
+                  </div>`
+                temp++;
+                $("#append_cat").append(template);
+                }
+              }
+              else
+            {
+              for(var i=temp;i<len_cat;i++)
+            {
+            template=`<div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" autocomplete="off" onclick="is_checked_cat()" id="category${cat_id[i]}">
+                      <label class="custom-control-label" for="category${cat_id[i]}">${cat_data[i]}</label>
+                  </div>`
+            $("#append_cat").append(template);
+            temp++;
+            }
+            ee.preventDefault();
+            }
+        }
+
+    });
+    function cat_show_all(){
+        document.getElementById('append_cat').innerHTML=``;
+          for(var i=0;i<len_cat;i++)
+        {
+        template=`<div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" autocomplete="off" onclick="is_checked_cat()" id="category${cat_id[i]}">
+                      <label class="custom-control-label" for="category${cat_id[i]}">${cat_data[i]}</label>
+                  </div>`
+        $("#append_cat").append(template);
+        }
+        $("#sort_category").hide();
+      }
+
+        function search_cat(){
+        document.getElementById('append_cat').innerHTML=``;
+        var xx_cat = document.getElementById("search_input_cat").value;
+        data1_cat=cat_data;
+        data1_cat=data1_cat.map(data1_cat => data1_cat.toLowerCase());
+        xx_cat=xx_cat.toLowerCase();
+        var indexx_cat=data1_cat.findIndex(element => element.includes(xx_cat));
+        console.log(xx_cat.length);
+        if(xx_cat.length>0)
+        {
+          $("#sort_category").hide();
+
+        for(var j=0;j<len_cat;j++)
+        {
+          if(data1_cat[j].includes(xx_cat))
+          {
+            template=`<div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" autocomplete="off" onclick="is_checked_cat()" id="category${cat_id[j]}">
+                      <label class="custom-control-label" for="category${cat_id[j]}">${cat_data[j]}</label>
+                  </div>`
+          $("#append_cat").append(template);
+          }
+        }
+        }
+        else
+        {
+          $("#sort_category").show();
+          document.getElementById('append_cat').innerHTML=``;
+          temp=0;
+          fetch_data_cat();
+
+        }
+      }
+
+       $("#success_cat").click(function(e){
+         var list_cat = [];
+         e.preventDefault();
+          $("input:checkbox").each(function(){
+          if($(this).is(":checked")){
+            list_cat.push($(this).attr("id"));
+          }
+        })
+        console.log(list_cat);
+        ajax2(list_cat);
+       });
+        function ajax2(list_cat){
+            $.ajax({
+          type:'POST',
+          url:'',
+          data:{
+            'action':'list',
+            'cat[]':list_cat,
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+            }
+        }).done(function() {
+  window.location.href="{% url 'product:category' %}";
+});
+}
+// FOR BRAND #################################################################
+    function fetch_data(){
+    //if list length is less than 8 we assume initially 8 brand will be shown
+    if(len<=8 && len>0 )
+    {
+        for(var i=0;i<len;i++)
+        {
+        template=`<div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input checking" autocomplete="off" onclick="is_checked()" id="${data_id[i]}">
+                <label class="custom-control-label" for="${data_id[i]}">${data[i]}</label>
+          </div>`
+        $("#append_brand").append(template);
+        }
+    }
+
+      // if len of the list is greater than 8 then it will come in eleseif part
+    else if(len>0 && len>8)
+    {
+
+      for(var i=0;i<8;i++)
+        {
+        template=`<div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input checking" autocomplete="off" onclick="is_checked()" id="${data_id[i]}">
+                <label class="custom-control-label" for="${data_id[i]}">${data[i]}</label>
+          </div>`
+        $("#append_brand").append(template);
+
+        }
+    }
+  }
+
+var count=0;
+
+$(document).ready(function() {
+console.log("hiii")
+    $('img').click(function () {
+        val=0
+        var alt =($(this).attr("alt"));
+
+        console.log(alt);
+         $.ajax({
+          type:'POST',
+          url:'',
+          data:{
+            'action':'send_var',
+            'alt':alt,
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+          },
+          success:function(response){
+            document.getElementById("show-msg").innerHTML= ""
+            window.location.href="{% url 'product:category' %}";
+          },
+          error:function(response){
+            document.getElementById("show-msg").innerHTML=
+              `<div class="alert alert-warning" role="alert">
+                Sorry this product group is currently unavailable!
+              </div>`
+          }
+        })
+    });
+});
+
+$('#sort_brand').click(function(e){
+  if(count==0)
+  {
+    count=8;
+  }
+   if(data.length>8)
+      {
+        count=count;
+        var new_count=count+4;
+        if(new_count<len)
+        {
+          for(var i=count;i<new_count;i++)
+        {
+        var template=`<div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input checking" autocomplete="off" onclick="is_checked()" id="${data_id[i]}">
+                <label class="custom-control-label" for="${data_id[i]}">${data[i]}</label>
+          </div>`
+        count++;
+        $("#append_brand").append(template);
+        }
+        e.preventDefault();
+        }
+        else
+        {
+          for(var i=count;i<len;i++)
+        {
+        template=`<div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input checking" autocomplete="off" onclick="is_checked()" id="${data_id[i]}">
+                <label class="custom-control-label" for="${data_id[i]}">${data[i]}</label>
+          </div>`
+        $("#append_brand").append(template);
+        count++;
+        }
+        e.preventDefault();
+        }
+        }
+});
+      function brand_sow_all(){
+        document.getElementById('append_brand').innerHTML=``;
+          for(var i=0;i<len;i++)
+        {
+        template=`<div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input checking" autocomplete="off" onclick="is_checked()" id="${data_id[i]}">
+                <label class="custom-control-label" for="${data_id[i]}">${data[i]}</label>
+          </div>`
+        $("#append_brand").append(template);
+        }
+        $("#sort_brand").hide();
+      }
+      function search(){
+        document.getElementById('append_brand').innerHTML=``;
+        var xx = document.getElementById("search_input").value;
+        data1=data;
+        data1=data1.map(data1 => data1.toLowerCase());
+        xx=xx.toLowerCase();
+        var indexx=data1.findIndex(element => element.includes(xx));
+        console.log(xx.length);
+        if(xx.length>0)
+        {
+          $("#sort_brand").hide();
+
+        for(var j=0;j<len;j++)
+        {
+          if(data1[j].includes(xx))
+          {
+            template=`<div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input checking" autocomplete="off" onclick="is_checked()"  id="${data_id[j]}">
+                <label class="custom-control-label" for="${data_id[j]}">${data[j]}</label>
+          </div>`
+          $("#append_brand").append(template);
+          }
+        }
+        }
+        else
+        {
+          $("#sort_brand").show();
+          document.getElementById('append_brand').innerHTML=``;
+          count=0;
+          fetch_data();
+        }
+      }
+       $("#success").click(function(e){
+         var list = [];
+         e.preventDefault();
+          $("input:checkbox").each(function(){
+          if($(this).is(":checked")){
+            list.push($(this).attr("id"));
+          }
+        })
+        console.log(list);
+        ajax1(list);
+       });
+        function ajax1(list){
+          console.log(list);
+            $.ajax({
+          type:'POST',
+          url:'',
+          data:{
+            'action':'list',
+            'brand[]':list,
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+            }
+        }).done(function() {
+  window.location.href="{% url 'product:category' %}";
+});
+        }
+      document.getElementById('success').disabled=true;
+      document.getElementById('success_cat').disabled=true;
+      function is_checked(){
+      if ($("#brand_form input:checkbox:checked").length > 0)
+      {
+        document.getElementById('success').disabled=false;
+      }
+      else
+      {
+        document.getElementById('success').disabled=true;
+      }
+       }
+       function is_checked_cat(){
+      if ($("#cat_form input:checkbox:checked").length > 0)
+      {
+        document.getElementById('success_cat').disabled=false;
+      }
+      else
+      {
+        document.getElementById('success_cat').disabled=true;
+      }
+       }
+function search_slider_1()
+{
+  var val = document.getElementById("location_1").value;
+}
+function autocomplete(inp,arr){
+  console.log(arr)
+    var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      console.log(val)
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+}
+let combined_detail=[...data, ...cat_data, ...prd_name]
+console.log(combined_detail)
+autocomplete(document.getElementById("location_1"),combined_detail)
+function get_inpt_val(){
+var v;
+if(document.getElementById("location_1").value)
+{
+  v=document.getElementById("location_1").value;
+}
+$.ajax({
+  type: "POST",
+  url:"",
+  data:{
+    'action':'location',
+    'loc':v,
+     csrfmiddlewaretoken: '{{ csrf_token }}'
+  },
+  dataType: "JSON",
+  success: function(context){
+    document.getElementById("car_location_1").innerHTML=``;
+    document.getElementById("car_location_12").innerHTML=``;
+    var car_data=JSON.parse(context.loc_data)
+    var c=0
+
+    var mq = window.matchMedia( "(max-width: 500px)" );
+    //This is for mobile devices
+
+    if(mq.matches)
+    {
+      if(car_data.length<=0){
+      var data = JSON.parse(context.queryset)
+
+      for(var i=0;i<data.length;i++){
+
+        if(i%1 == 0){
+        c=i
+        if(i==0)
+          var cls="active"
+        else
+          var cls=""
+        var template=`
+                  <div class="carousel-item ${cls}">
+                    <div class="row" id="final1${c}">
+                    </div>
+                  </div>`
+        $("#car_location_12").append(template);
+        }
+        var slug=data[i]['fields']['slug']
+       var url="{% url 'product:website_home_list' 0 %}".replace('0',slug);
+       var img_url="{% url 'dashboard:seller_product_detail' 0  1 %}".replace('0',slug);
+       img_url=img_url.replace('1',data[i]['pk'])
+        var element = `<div class="col-12 col-sm-4 col-md-3">
+                        <div class="product-item">
+                            <div class="image imgcls">
+                              <a href=${img_url} ><img src="/media/${data[i]['fields']['image1']}" alt="Image 4"> </a>
+                            </div>
+                            <a href=${img_url} ><div class="name" style="height:50px;">${data[i]['fields']['name']}</div></a>
+                            
+                            <a href=${url} class="btn btn-primary btn-block">Visit our store</a>
+                        </div>
+                      </div>`
+        $("#final1"+c).append(element)
+      }
+    }
+
+    else{
+        console.log(car_data);
+    for(var i=0;i<car_data.length;i++){
+
+      if(i%1 == 0){
+        c=i
+        if(i==0)
+          var cls="active"
+        else
+          var cls=""
+        var template=`
+                  <div class="carousel-item ${cls}">
+                    <div class="row" id="final1${c}">
+                    </div>
+                  </div>`
+        $("#car_location_12").append(template);
+
+
+      }
+       var slug=car_data[i]['fields']['slug']
+       var url="{% url 'product:website_home_list' 0 %}".replace('0',slug);
+       var img_url="{% url 'dashboard:seller_product_detail' 0  1 %}".replace('0',slug);
+       img_url=img_url.replace('1',car_data[i]['pk'])
+        var element = `<div class="col-12 col-sm-4 col-md-3">
+                  <div class="product-item">
+                      <div class="image imgcls">
+                        <a href=${img_url} ><img src="/media/${car_data[i]['fields']['image1']}" alt="Image 4"> </a>
+                      </div>
+                      <a href=${img_url} ><div class="name" style="height:50px;">${car_data[i]['fields']['name']}</div></a>
+                      
+                      <a href=${url} class="btn btn-primary btn-block">Visit our store</a>
+                  </div>
+                </div>`
+  $("#final1"+c).append(element)
+      }
+    }
+    }
+
+    //This is for Laptop devices
+
+    else
+    {
+    if(car_data.length<=0){
+      var data = JSON.parse(context.queryset)
+      for(var i=0;i<data.length;i++){
+
+        if(i%4 == 0){
+        c=i
+        if(i==0)
+          var cls="active"
+        else
+          var cls=""
+        var template=`
+                  <div class="carousel-item ${cls}">
+                    <div class="row" id="final${c}">
+                    </div>
+                  </div>`
+        $("#car_location_1").append(template);
+        }
+        var slug=data[i]['fields']['slug']
+       var url="{% url 'product:website_home_list' 0 %}".replace('0',slug);
+       var img_url="{% url 'dashboard:seller_product_detail' 0  1 %}".replace('0',slug);
+       img_url=img_url.replace('1',data[i]['pk'])
+        var element = `<div class="col-12 col-sm-4 col-md-3">
+                        <div class="product-item">
+                            <div class="image imgcls">
+                              <a href=${img_url} ><img src="/media/${data[i]['fields']['image1']}" alt="Image 4"> </a>
+                            </div>
+                            <a href=${img_url} ><div class="name" style="height:50px;">${data[i]['fields']['name']}</div></a>
+                            
+                            <a href=${url} class="btn btn-primary btn-block">Visit our store</a>
+                        </div>
+                      </div>`
+        $("#final"+c).append(element)
+      }
+    }
+    else{
+    for(var i=0;i<car_data.length;i++){
+
+      if(i%4 == 0){
+        c=i
+        if(i==0)
+          var cls="active"
+        else
+          var cls=""
+        var template=`
+                  <div class="carousel-item ${cls}">
+                    <div class="row" id="final${c}">
+                    </div>
+                  </div>`
+        $("#car_location_1").append(template);
+
+
+
+      }
+      var slug=car_data[i]['fields']['slug']
+       var url="{% url 'product:website_home_list' 0 %}".replace('0',slug);
+       var img_url="{% url 'dashboard:seller_product_detail' 0  1 %}".replace('0',slug);
+       img_url=img_url.replace('1',car_data[i]['pk'])
+      var element = `<div class="col-12 col-sm-4 col-md-3">
+                      <div class="product-item">
+                          <div class="image imgcls">
+                            <a href=${img_url} ><img src="/media/${car_data[i]['fields']['image1']}" alt="Image 4"> </a>
+                          </div>
+                          <a href=${img_url} ><div class="name" style="height:50px;">${car_data[i]['fields']['name']}</div></a>
+                          
+                          <a href=${url} class="btn btn-primary btn-block">Visit our store</a>
+                      </div>
+                    </div>`
+
+      $("#final"+c).append(element)
+
+      }
+    }
+    }
+  }
+})
+}
+
+
+// scrpit written for mobile view's search section
+
+// $(document).ready(fucntion(){
+//         $('#mobile_button').on('click',function(){
+//           $('#feature').hide();
+//         });
+//       });
+$(document).ready(function(){
+  // $("#mobile").click(function(){
+    $("#feature").hide();
+
+
+  });
+
+
+
+function mobile() {
+  var x = document.getElementById("feature");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+// end
+document.getElementById("display_500").innerHTML=``;
+$(window).resize(function(){
+    if ($(window).width() <= 500){
+        document.getElementById("display_500").innerHTML=`<button type="button" style="margin-left: 73px;"  id="demo_but" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Sort by Categories and Brand</button>`;
+
+    }
+    else
+    {
+      document.getElementById("display_500").innerHTML=``;
+    }
+});
+var display_counter=1;
+
+$("#display_500").click(function(){
+
+
+  if(display_counter==0){
+    document.getElementById("hide_sort_brand").style.display='none';
+    document.getElementById("hide_sort_cat").style.display='none';
+    display_counter=1;
+  }
+  else
+  {
+  document.getElementById("hide_sort_brand").style.display='block';
+  document.getElementById("hide_sort_cat").style.display='block';
+  display_counter=0;
+  }
+});
+
+{% comment %} auto location  {% endcomment %}
+var x = document.getElementById("output");
+function getLoc(){
+
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+  }
+  else{
+    x.innerHTML ="Browser not supporting"
+  }      
+}
+
+function showPosition(position){
+  x.innerHTML = "latitude" + " "+position.coords.latitude;
+  x.innerHTML += "<br> longitude"+ " " +position.coords.longitude;
+  var locAPI = "http://maps.googleapis.com/maps/api/geocode/json?latlng="
+  +position.coords.latitude+","+position.coords.longitude+","+"&sensor=true&key=AIzaSyCm273k-R6aFqRfE9TQrFOH7cqI0KC22_o";
+}
+ 
+
+function playPause() { 
+  var myVideo = document.getElementById("video1"); 
+  if (myVideo.paused) 
+    myVideo.play(); 
+  else 
+    myVideo.pause(); 
+} 
+
+
+</script>
+
+
+{% endblock content %}

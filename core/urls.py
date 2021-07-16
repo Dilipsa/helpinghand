@@ -16,10 +16,15 @@ urlpatterns = [
 
     path("admin-taker/", views.TakerListView.as_view(), name="admin_taker"),
     path("admin-approve/<int:pk>/", views.approval_view, name="admin_approve"),
+    path("volunteer-approve/<int:pk>/", views.volunteer_approval_view, name="volunteer_approve"),
+
     path("admin-unapprove/<int:pk>/", views.unapproval_view, name="admin_unapprove"),
+    path("volunteer-unapprove/<int:pk>/", views.volunteer_unapproval_view, name="volunteer_unapprove"),
+
     path("donate/<str:username>/<int:pk>/", views.donate_view, name="donate"),
     path("volunteer/<str:username>/<int:pk>/", views.volunteer, name="volunteer"),
     path("volunteer-list/", views.volunteer_list_view, name="volunteer_list"),
+    path("volunteer-request/", views.TakerRequestView.as_view(), name="volunteer_request"),
     path("donation-history/", views.donation_history, name="donation_history"),
     path("feedback/<int:pk>/", views.feedback_view, name="feedback"),
 ]

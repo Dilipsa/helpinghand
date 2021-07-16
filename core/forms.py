@@ -7,7 +7,7 @@ class TakerForm(forms.ModelForm):
     class Meta:
         model = Taker
         fields = "__all__"
-        exclude = ["user", "approve"]
+        exclude = ["user", "approve", "volunteer_status"]
 
 class DonateForm(forms.ModelForm):
     class Meta:

@@ -17,6 +17,7 @@ class RegisterView(View):
         last_name = request.POST["last_name"]
         email = request.POST["email"]
         address = request.POST["address"]
+        pin_code = request.POST["pin_code"]
         gov_id = request.FILES["gov_id"]
         password = request.POST["password"]
         password1 = request.POST["password1"]
@@ -29,7 +30,7 @@ class RegisterView(View):
         user = User.objects.create_user(username=username,first_name=first_name,last_name=last_name,email=email, password=password)
         user.save()
 
-        reg = Register(user=user, mobile=mobile, address=address, gov_id=gov_id)
+        reg = Register(user=user, mobile=mobile, address=address, pin_code=pin_code, gov_id=gov_id)
         reg.save()
         messages.success(request, "User created successfully")
         return redirect("/account/login/")

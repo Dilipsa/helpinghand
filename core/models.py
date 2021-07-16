@@ -6,13 +6,14 @@ import datetime
 from django.contrib.auth.models import User
 class Taker(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user")
-    first_name = models.CharField(max_length=20)
-    last_name = models.CharField(max_length=20)
-    email = models.EmailField(max_length=20)
+    # first_name = models.CharField(max_length=20)
+    # last_name = models.CharField(max_length=20)
+    # email = models.EmailField(max_length=20)
     image = models.ImageField(upload_to="taker_image")
     video = EmbedVideoField()
     description = models.TextField()
     approve = models.BooleanField(default=False)
+    volunteer_status = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username
